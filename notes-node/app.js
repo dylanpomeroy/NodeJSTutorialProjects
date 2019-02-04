@@ -17,16 +17,22 @@ if (command === 'add') {
     
     note === undefined ? 
         console.log('A note with that title aready exists')
-        : console.log(`Note added successfully.\n-- \nTitle: ${note.title} \nBody: ${note.body}`);
+        : notes.logNote(note);
 
 } else if (command === 'list') {
     notes.getAll();
+
 } else if (command === 'read') {
-    notes.getNote(argv.title);
+    var note = notes.getNote(argv.title);
+    console.log(note === undefined ? `No notes with title "${argv.title}" are saved.`
+        : notes.logNote(note));
+
 } else if (command === 'remove') {
     var noteRemoved = notes.removeNote(argv.title);
     var message = noteRemoved ? `Note with title "${argv.title}" removed.` : `Note with title "${argv.title}" does not exist.`
     console.log(message);
+    
 } else {
     console.log('Command not recognized');
+
 }
