@@ -32,6 +32,24 @@ it('should verify first and last names are set', () => {
         })
 })
 
+it('should async add two numbers', (done) => {
+    utils.asyncAdd(4, 3, (sum) => {
+        expect(sum)
+            .toBe(7)
+            .toBeA('number');
+        done();
+    });
+});
+
+it('should async square a number', (done) => {
+    utils.asyncSquare(3, (square) => {
+        expect(square)
+            .toBeA('number')
+            .toBe(9);
+        done();
+    });
+});
+
 // it('should expect some values', () => {
 //     // expect(12)
 //     //     .toNotBe(12)
