@@ -41,13 +41,13 @@ describe('PATCH /todos/:id', () => {
         var hexId = todos[1]._id.toHexString();
 
         request(app)
-            .patch(`/toso/${hexid}`)
+            .patch(`/todos/${hexId}`)
             .send({ text: 'updated text', completed: false})
             .expect(200)
             .expect((res) => {
                 expect(res.body.todo.text).toBe('updated text')
-                expect(res.body.completed).toBe(false);
-                expect(res.body.completedAt).toNotExist();
+                expect(res.body.todo.completed).toBe(false);
+                expect(res.body.todo.completedAt).toNotExist();
             })
             .end(done);
     }));
